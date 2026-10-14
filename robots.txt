@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ivanizq10.github.io/sitemap.xml
