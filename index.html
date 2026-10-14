@@ -1,73 +1,28 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Herramientas online gratuitas y guías prácticas para organizar tareas, calcular, convertir y trabajar mejor con recursos digitales.">
-  <meta name="theme-color" content="#111827">
-  <title>UtiliLab — Herramientas online gratuitas</title>
-  <link rel="canonical" href="https://TU-DOMINIO.example/">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="script.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UtiliLab — Herramientas online gratis para el día a día</title>
+<meta name="description" content="Usa herramientas online gratuitas: calculadora de porcentajes, conversor de medidas, organizador de tareas y contador de palabras. Sin instalar nada.">
+<meta name="theme-color" content="#f6f7fb"><link rel="canonical" href="https://ivanizq10.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+<script defer src="script.js"></script>
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="index.html" aria-label="UtiliLab inicio"><span class="brand-mark">U</span> UtiliLab</a>
-  <nav aria-label="Navegación principal">
-    <a href="#herramientas">Herramientas</a>
-    <a href="#guias">Guías</a>
-    <a href="sobre.html">Sobre el proyecto</a>
-  </nav>
-</header>
-<main>
-  <section class="hero">
-    <div class="eyebrow">HERRAMIENTAS ONLINE, SIN COMPLICACIONES</div>
-    <h1>Pequeñas herramientas.<br><span>Grandes ahorros de tiempo.</span></h1>
-    <p class="hero-copy">Calculadoras, organizadores y guías claras para resolver pequeñas tareas del día a día directamente desde tu navegador.</p>
-    <a class="button" href="#herramientas">Explorar recursos <span aria-hidden="true">↗</span></a>
-    <div class="hero-note">Gratis para empezar. Sin instalaciones ni conocimientos técnicos.</div>
-  </section>
-
-  <section class="section" id="herramientas">
-    <div class="section-heading"><div><p class="eyebrow">PRUEBA ALGO ÚTIL</p><h2>Herramientas gratuitas</h2></div><p>Recursos sencillos para resolver tareas habituales en pocos pasos.</p></div>
-    <div class="tool-grid">
-      <article class="tool-card featured">
-        <div class="icon">✦</div><p class="tag">RECURSO INTERACTIVO</p><h3>Organizador de tareas</h3>
-        <p>Convierte una lista de pendientes en un plan de trabajo sencillo.</p>
-        <button class="text-button" id="open-planner">Abrir herramienta <span>→</span></button>
-      </article>
-      <article class="tool-card">
-        <div class="icon lilac">⌁</div><p class="tag">PRÓXIMAMENTE</p><h3>Calculadora de porcentajes</h3>
-        <p>Calcula descuentos, aumentos y porcentajes sin complicarte.</p><label class="mini-label" for="percent-base">Cantidad</label><input class="mini-input" id="percent-base" type="number" min="0" step="any" placeholder="Ej. 80"><label class="mini-label" for="percent-rate">Porcentaje</label><input class="mini-input" id="percent-rate" type="number" min="0" step="any" placeholder="Ej. 15"><button class="text-button" id="calc-percent" type="button">Calcular porcentaje →</button><p id="percent-result" class="result" aria-live="polite"></p>
-      </article>
-      <article class="tool-card">
-        <div class="icon mint">▤</div><p class="tag">CONVERSOR RÁPIDO</p><h3>Centímetros y pulgadas</h3>
-        <p>Convierte medidas habituales al instante.</p><label class="mini-label" for="unit-value">Valor</label><input class="mini-input" id="unit-value" type="number" step="any" placeholder="Introduce una medida"><div class="button-row"><button class="text-button" id="cm-in" type="button">cm → pulgadas</button><button class="text-button" id="in-cm" type="button">pulgadas → cm</button></div><p id="unit-result" class="result" aria-live="polite"></p>
-      </article>
-    </div>
-  </section>
-
-  <section class="planner-panel" id="planner" hidden>
-    <div class="planner-head"><div><p class="eyebrow">TU PLAN, EN UN SOLO LUGAR</p><h2>Organizador de tareas</h2></div><button class="close-button" id="close-planner" aria-label="Cerrar herramienta">×</button></div>
-    <p>Añade tareas y marca las que termines. Los datos se guardan solo en este navegador.</p>
-    <form id="task-form"><label class="sr-only" for="task-input">Nueva tarea</label><input id="task-input" maxlength="120" placeholder="Ej. Preparar una presentación" required><button class="button" type="submit">Añadir</button></form>
-    <ul id="task-list" class="task-list"></ul>
-    <button id="clear-tasks" class="text-button">Borrar todas las tareas</button>
-  </section>
-
-  <section class="section" id="guias">
-    <div class="section-heading"><div><p class="eyebrow">APRENDE PASO A PASO</p><h2>Guías prácticas</h2></div><p>Explicaciones claras para resolver tareas habituales.</p></div>
-    <div class="guide-grid">
-      <a class="guide-card" href="guia-organizar-tareas.html"><span class="guide-number">01</span><div><span class="tag">PRODUCTIVIDAD · 5 MIN</span><h3>Cómo organizar tus tareas sin complicarte</h3><p>Un método sencillo para decidir qué hacer primero y revisar tu progreso.</p><span class="read-link">Leer guía →</span></div></a>
-      <a class="guide-card" href="guia-ia-responsable.html"><span class="guide-number">02</span><div><span class="tag">INTELIGENCIA ARTIFICIAL · 6 MIN</span><h3>Cómo usar herramientas digitales de forma segura</h3><p>Formas de pedir explicaciones, comprobar respuestas y mantener tu propio criterio.</p><span class="read-link">Leer guía →</span></div></a>
-      <a class="guide-card" href="guia-seguridad-digital.html"><span class="guide-number">03</span><div><span class="tag">SEGURIDAD DIGITAL · 4 MIN</span><h3>Hábitos básicos para proteger tus cuentas</h3><p>Consejos sencillos sobre contraseñas, verificación en dos pasos y privacidad.</p><span class="read-link">Leer guía →</span></div></a>
-    </div>
-  </section>
-  <section class="newsletter">
-    <div><p class="eyebrow">UN PROYECTO EN CRECIMIENTO</p><h2>Herramientas que resuelven.</h2><p>Estamos construyendo utilidades online gratuitas, fáciles de usar y con explicaciones claras.</p></div>
-    <a class="button button-light" href="sobre.html">Conoce el proyecto <span>↗</span></a>
-  </section>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="UtiliLab, inicio"><span class="brand-mark">u<span>+</span></span><span>UtiliLab<small>Útil. Claro. Gratis.</small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menú</button><nav id="nav-links" class="nav-links"><a href="#herramientas">Herramientas</a><a href="#guias">Guías</a><a href="sobre.html">Sobre UtiliLab</a></nav></div></header>
+<main id="contenido">
+<section class="hero"><div class="container hero-grid"><div class="hero-copy"><span class="eyebrow"><span class="pulse"></span> HERRAMIENTAS ONLINE, SIN COMPLICACIONES</span><h1>Menos vueltas.<br><span>Más cosas hechas.</span></h1><p class="hero-lead">Pequeñas herramientas gratuitas para resolver tareas cotidianas en segundos. Sin registros, sin instalaciones y sin líos.</p><div class="hero-actions"><a class="button button-primary" href="#herramientas">Explorar herramientas <span aria-hidden="true">↘</span></a><a class="text-link" href="#guias">Ver guías prácticas →</a></div><div class="trust-row"><span>✓ Gratis</span><span>✓ Fácil de usar</span><span>✓ Directo en tu navegador</span></div></div><div class="hero-art" aria-label="Ilustración decorativa de herramientas digitales"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="floating-card card-main"><span class="mini-icon purple">%</span><div><b>Calcula en un momento</b><small>Porcentajes y descuentos</small></div><span class="checkmark">✓</span></div><div class="floating-card card-small card-top"><span class="mini-icon green">✓</span><div><b>Organiza tu día</b><small>Una tarea cada vez</small></div></div><div class="floating-card card-small card-bottom"><span class="mini-icon orange">↔</span><div><b>Convierte medidas</b><small>Resultados al instante</small></div></div><div class="hero-spark spark-one">✳</div><div class="hero-spark spark-two">✦</div></div></div></section>
+<section class="section tools-section" id="herramientas"><div class="container"><div class="section-heading"><div><span class="eyebrow">PRUEBA ALGO ÚTIL</span><h2>Herramientas gratuitas</h2><p>Elige una utilidad y empieza. No necesitas crear una cuenta.</p></div><span class="section-count">04 <span>utilidades</span></span></div>
+<div class="tools-grid">
+<article class="tool-card task-card"><div class="tool-top"><span class="tool-icon icon-lilac">✓</span><span class="tag tag-live">Interactiva</span></div><h3>Organizador de tareas</h3><p>Ordena tus pendientes, marca lo que termines y guarda tu lista en este navegador.</p><a class="card-link" href="#organizador">Organizar tareas <span>↗</span></a></article>
+<article class="tool-card"><div class="tool-top"><span class="tool-icon icon-peach">%</span><span class="tag">Calculadora</span></div><h3>Calculadora de porcentajes</h3><p>Calcula un porcentaje, descubre qué parte representa una cantidad o aplica un descuento.</p><div class="tool-form"><label for="percent-base">Cantidad</label><input id="percent-base" type="number" min="0" step="any" placeholder="Ej. 80"><label for="percent-rate">Porcentaje (%)</label><input id="percent-rate" type="number" step="any" placeholder="Ej. 15"><button class="button button-dark" id="percent-calc">Calcular</button><p class="result" id="percent-result" aria-live="polite">Introduce los datos para empezar.</p></div></article>
+<article class="tool-card"><div class="tool-top"><span class="tool-icon icon-mint">↔</span><span class="tag">Conversor</span></div><h3>Centímetros y pulgadas</h3><p>Convierte medidas en ambas direcciones con el resultado redondeado a dos decimales.</p><div class="tool-form"><label for="convert-value">Medida</label><input id="convert-value" type="number" step="any" placeholder="Introduce una medida"><div class="button-row"><button class="button button-dark" id="cm-inch">cm → pulgadas</button><button class="button button-outline" id="inch-cm">pulgadas → cm</button></div><p class="result" id="convert-result" aria-live="polite">El resultado aparecerá aquí.</p></div></article>
+<article class="tool-card"><div class="tool-top"><span class="tool-icon icon-blue">Aa</span><span class="tag">Texto</span></div><h3>Contador de palabras</h3><p>Cuenta palabras, caracteres y frases mientras escribes o pegas un texto.</p><div class="tool-form"><label for="word-text">Tu texto</label><textarea id="word-text" rows="3" placeholder="Escribe o pega aquí..."></textarea><div class="stats-row"><span><b id="word-count">0</b><small>palabras</small></span><span><b id="char-count">0</b><small>caracteres</small></span><span><b id="sentence-count">0</b><small>frases</small></span></div></div></article>
+</div></div></section>
+<section class="section organizer-section" id="organizador"><div class="container organizer-grid"><div class="organizer-copy"><span class="eyebrow">TU PLAN, EN UN SOLO LUGAR</span><h2>Un paso cada vez.</h2><p>Anota lo que tienes pendiente y ve tachando lo que ya has terminado. Tu lista se guarda en este navegador, en tu dispositivo.</p><ul class="check-list"><li>Separa lo urgente de lo que puede esperar.</li><li>Marca las tareas terminadas.</li><li>No necesitas registrarte.</li></ul><p class="privacy-note"><span>🔒</span> Tus tareas se guardan localmente y no se envían a un servidor.</p></div><div class="todo-panel"><div class="todo-header"><div><span class="eyebrow">MI LISTA</span><h3>Mis tareas</h3></div><span class="todo-count" id="todo-count">0 tareas</span></div><form id="todo-form" class="todo-input-row"><label class="sr-only" for="todo-input">Nueva tarea</label><input id="todo-input" maxlength="120" placeholder="Ej. Estudiar 20 minutos" required><button class="button button-primary" type="submit">Añadir +</button></form><ul id="todo-list" class="todo-list"><li class="empty-state">Tu lista está vacía. Añade una primera tarea.</li></ul><div class="todo-footer"><span id="todo-progress">0 completadas</span><button class="small-button" id="clear-todos" type="button">Borrar completadas</button></div></div></div></section>
+<section class="section guides-section" id="guias"><div class="container"><div class="section-heading"><div><span class="eyebrow">APRENDE PASO A PASO</span><h2>Guías prácticas</h2><p>Consejos directos y fáciles de aplicar en tu día a día digital.</p></div><a class="text-link" href="guias/">Todas las guías →</a></div><div class="guides-grid"><a class="guide-card" href="guias/organizar-tareas.html"><span class="guide-number">01 / PRODUCTIVIDAD · 5 MIN</span><span class="guide-symbol symbol-purple">↗</span><h3>Cómo organizar tus tareas sin complicarte</h3><p>Un método sencillo para decidir qué hacer primero y revisar tu progreso.</p><span class="guide-read">Leer guía <span>→</span></span></a><a class="guide-card" href="guias/uso-seguro-herramientas-digitales.html"><span class="guide-number">02 / HERRAMIENTAS DIGITALES · 6 MIN</span><span class="guide-symbol symbol-green">◎</span><h3>Cómo usar herramientas digitales con criterio</h3><p>Comprueba resultados, protege tus datos y mantén el control de tus decisiones.</p><span class="guide-read">Leer guía <span>→</span></span></a><a class="guide-card" href="guias/proteger-cuentas.html"><span class="guide-number">03 / SEGURIDAD DIGITAL · 4 MIN</span><span class="guide-symbol symbol-orange">⌑</span><h3>Hábitos básicos para proteger tus cuentas</h3><p>Consejos sencillos sobre contraseñas, verificación en dos pasos y privacidad.</p><span class="guide-read">Leer guía <span>→</span></span></a></div></div></section>
+<section class="bottom-cta"><div class="container cta-inner"><div><span class="eyebrow">UN PROYECTO EN CRECIMIENTO</span><h2>Útil por diseño.<br>Simple por naturaleza.</h2><p>Seguiremos creando herramientas claras para las pequeñas tareas de cada día.</p></div><a class="button button-light" href="sobre.html">Conoce UtiliLab <span>↗</span></a></div></section>
 </main>
-<footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">Z</span> UtiliLab</a><p>Herramientas online gratuitas y guías prácticas para el día a día.</p><div class="footer-links"><a href="sobre.html">Sobre nosotros</a><a href="privacidad.html">Privacidad</a><a href="aviso-legal.html">Aviso legal</a></div><small>© <span id="year"></span> UtiliLab. Proyecto inicial; completa los datos legales antes de publicarlo.</small></footer>
-</body>
-</html>
+<footer class="site-footer"><div class="container footer-top"><a class="brand brand-footer" href="index.html"><span class="brand-mark">u<span>+</span></span><span>UtiliLab<small>Útil. Claro. Gratis.</small></span></a><p>Herramientas online gratuitas y guías prácticas para el día a día.</p><nav class="footer-links"><a href="sobre.html">Sobre el proyecto</a><a href="privacidad.html">Privacidad</a><a href="aviso-legal.html">Aviso legal</a></nav></div><div class="container footer-bottom"><span>© <span id="year"></span> UtiliLab</span><span>Hecho para que lo cotidiano sea un poco más fácil.</span></div></footer>
+</body></html>

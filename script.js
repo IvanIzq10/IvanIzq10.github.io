@@ -1,48 +1,9 @@
-const year = document.getElementById('year');
-if (year) year.textContent = new Date().getFullYear();
-const planner = document.getElementById('planner');
-const open = document.getElementById('open-planner');
-const close = document.getElementById('close-planner');
-if (open && planner) open.addEventListener('click', () => { planner.hidden = false; planner.scrollIntoView({behavior:'smooth', block:'center'}); document.getElementById('task-input').focus(); });
-if (close && planner) close.addEventListener('click', () => { planner.hidden = true; });
-const form = document.getElementById('task-form');
-const input = document.getElementById('task-input');
-const list = document.getElementById('task-list');
-const clear = document.getElementById('clear-tasks');
-let tasks = [];
-try { tasks = JSON.parse(localStorage.getItem('zonaia-tasks') || '[]'); } catch { tasks = []; }
-function save(){ try { localStorage.setItem('zonaia-tasks', JSON.stringify(tasks)); } catch {} render(); }
-function render(){
-  if (!list) return;
-  list.replaceChildren();
-  tasks.forEach((task, i) => {
-    const li = document.createElement('li'); if(task.done) li.classList.add('done');
-    const checkbox = document.createElement('input'); checkbox.type='checkbox'; checkbox.checked=task.done; checkbox.setAttribute('aria-label','Marcar tarea como completada'); checkbox.addEventListener('change',()=>{tasks[i].done=checkbox.checked;save();});
-    const label = document.createElement('label'); label.textContent=task.text;
-    const remove = document.createElement('button'); remove.type='button'; remove.textContent='Eliminar'; remove.addEventListener('click',()=>{tasks.splice(i,1);save();});
-    li.append(checkbox,label,remove); list.append(li);
-  });
-}
-if(form) form.addEventListener('submit',e=>{e.preventDefault(); const text=input.value.trim(); if(!text)return; tasks.push({text,done:false});input.value='';save();input.focus();});
-if(clear) clear.addEventListener('click',()=>{tasks=[];save();});
-render();
-
-const percentButton = document.getElementById('calc-percent');
-if (percentButton) percentButton.addEventListener('click', () => {
-  const base = Number(document.getElementById('percent-base').value);
-  const rate = Number(document.getElementById('percent-rate').value);
-  const out = document.getElementById('percent-result');
-  if (document.getElementById('percent-base').value === '' || document.getElementById('percent-rate').value === '' || !Number.isFinite(base) || !Number.isFinite(rate)) { out.textContent = 'Introduce una cantidad y un porcentaje válidos.'; return; }
-  out.textContent = `${rate}% de ${base} = ${(base * rate / 100).toLocaleString('es-ES', {maximumFractionDigits: 6})}`;
-});
-const unitValue = document.getElementById('unit-value');
-function convertUnits(kind) {
-  const out = document.getElementById('unit-result');
-  if (!unitValue || unitValue.value === '' || !Number.isFinite(Number(unitValue.value))) { out.textContent = 'Introduce una medida válida.'; return; }
-  const n = Number(unitValue.value);
-  out.textContent = kind === 'cm-in'
-    ? `${n} cm = ${(n / 2.54).toLocaleString('es-ES', {maximumFractionDigits: 4})} pulgadas`
-    : `${n} pulgadas = ${(n * 2.54).toLocaleString('es-ES', {maximumFractionDigits: 4})} cm`;
-}
-const cmIn = document.getElementById('cm-in'); if(cmIn) cmIn.addEventListener('click',()=>convertUnits('cm-in'));
-const inCm = document.getElementById('in-cm'); if(inCm) inCm.addEventListener('click',()=>convertUnits('in-cm'));
+document.addEventListener('DOMContentLoaded',()=>{
+ const year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+ const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav-links');if(toggle&&nav)toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+ const base=document.getElementById('percent-base'),rate=document.getElementById('percent-rate'),pbtn=document.getElementById('percent-calc'),pres=document.getElementById('percent-result');if(pbtn)pbtn.addEventListener('click',()=>{const a=Number(base.value),b=Number(rate.value);if(base.value.trim()===''||rate.value.trim()===''||!Number.isFinite(a)||!Number.isFinite(b)){pres.textContent='Introduce una cantidad y un porcentaje válidos.';return;}pres.textContent=`El ${fmt(b)} % de ${fmt(a)} es ${fmt(a*b/100)}.`;});
+ const val=document.getElementById('convert-value'),cres=document.getElementById('convert-result');function convert(mult,label){if(!val.value.trim()||!Number.isFinite(Number(val.value))){cres.textContent='Introduce una medida válida.';return;}cres.textContent=`Resultado: ${fmt(Number(val.value)*mult)} ${label}.`;}const c1=document.getElementById('cm-inch'),c2=document.getElementById('inch-cm');if(c1)c1.addEventListener('click',()=>convert(1/2.54,'pulgadas'));if(c2)c2.addEventListener('click',()=>convert(2.54,'cm'));
+ const text=document.getElementById('word-text');if(text){const update=()=>{const s=text.value.trim(),words=s?s.split(/\s+/u).filter(Boolean).length:0,chars=text.value.length,sentences=s?s.split(/[.!?]+/u).filter(x=>x.trim()).length:0;document.getElementById('word-count').textContent=words;document.getElementById('char-count').textContent=chars;document.getElementById('sentence-count').textContent=sentences;};text.addEventListener('input',update);update();}
+ const form=document.getElementById('todo-form'),input=document.getElementById('todo-input'),list=document.getElementById('todo-list'),count=document.getElementById('todo-count'),progress=document.getElementById('todo-progress'),clear=document.getElementById('clear-todos');let tasks=[];try{tasks=JSON.parse(localStorage.getItem('utililab-tasks-v2')||'[]');if(!Array.isArray(tasks))tasks=[];}catch(e){tasks=[];}const save=()=>{try{localStorage.setItem('utililab-tasks-v2',JSON.stringify(tasks));}catch(e){}render();};function render(){if(!list)return;list.replaceChildren();if(!tasks.length){const li=document.createElement('li');li.className='empty-state';li.textContent='Tu lista está vacía. Añade una primera tarea.';list.append(li);}tasks.forEach(t=>{const li=document.createElement('li');li.className='todo-item'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!t.done;cb.setAttribute('aria-label','Marcar '+t.text+' como completada');cb.addEventListener('change',()=>{t.done=cb.checked;save();});const span=document.createElement('span');span.textContent=t.text;const del=document.createElement('button');del.className='delete-task';del.type='button';del.textContent='×';del.setAttribute('aria-label','Eliminar tarea '+t.text);del.addEventListener('click',()=>{tasks=tasks.filter(x=>x.id!==t.id);save();});li.append(cb,span,del);list.append(li);});const done=tasks.filter(t=>t.done).length;count.textContent=`${tasks.length} ${tasks.length===1?'tarea':'tareas'}`;progress.textContent=`${done} completadas`;}
+ if(form)form.addEventListener('submit',e=>{e.preventDefault();const v=input.value.trim();if(!v)return;tasks.push({id:Date.now()+Math.random(),text:v,done:false});input.value='';save();input.focus();});if(clear)clear.addEventListener('click',()=>{tasks=tasks.filter(t=>!t.done);save();});render();
+});function fmt(n){return new Intl.NumberFormat('es-ES',{maximumFractionDigits:4}).format(n)}
